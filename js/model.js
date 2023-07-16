@@ -23,7 +23,7 @@ export default class Model {
     }
 
     getTodos() {
-        return this.todos;
+        return [...this.todos];
     }
 
     findTodo(id) {
@@ -61,4 +61,9 @@ export default class Model {
         this.save();
     }
 
+    editTodo(id, values) {
+        const index = this.findTodo(id);
+        Object.assign(this.todos[index], values); // update the object with new properties
+        this.save();
+    }
 }
